@@ -1,8 +1,12 @@
 package com.example.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -14,9 +18,18 @@ import java.util.Date;
 @RestController
 public class DemoController {
 
+    Logger log = LoggerFactory.getLogger(DemoController.class);
+
     @RequestMapping("/")
     String home() {
         return "Hello World!";
+    }
+
+    @RequestMapping("/doLogin")
+    @ResponseBody
+    Boolean doLogin(@Valid Person vo) {
+        log.info(vo.toString());
+        return Boolean.TRUE;
     }
 
     @RequestMapping("/person")

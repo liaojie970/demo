@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.validation.Mobile;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Date;
  * @Date: 2018/8/1
  * @Modified By:
  */
+@Component
 public class Person {
 
     private String name;
@@ -17,6 +21,9 @@ public class Person {
     private String feature;
 
     private Date birthday;
+
+    @Mobile
+    private String mobile;
 
     public Person() {
     }
@@ -56,5 +63,13 @@ public class Person {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }
